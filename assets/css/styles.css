@@ -1,0 +1,22 @@
+html,
+body {
+  margin: 0px;
+  background-color: SeaGreen;
+  color: snow;
+}
+
+.title {
+  text-align: center;
+  background-color: DarkSlateGray;
+  color: snow;
+  padding: 25px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.card {
+  /* position: relative; */
+  width: 120px;
+  left: 10S0px;
+  /* margin-left: -75px; */
+}
