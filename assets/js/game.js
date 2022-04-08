@@ -33,10 +33,13 @@ const askCard = () => {
   return card;
 };
 
-const valueCard = () => {
-  let card2 = askCard();
+let card2 = askCard();
+console.log(`Carta 2 ${card2}`);
+
+const valueCard = (card2) => {
   const value = card2.substring(0, card2.length - 1);
-  console.log(`Carta 2: ${card2}`);
-  console.log(`Valor carta 2: ${value}`);
+  return isNaN(value) ? (value === "A" ? 11 : 10) : value * 1;
 };
-valueCard();
+valueCard(card2);
+
+console.log(`Valor carta : ${valueCard(card2)}`);
