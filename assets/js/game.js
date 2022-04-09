@@ -1,6 +1,12 @@
 let deck = [];
 const types = ["C", "D", "H", "S"];
 const highs = ["J", "Q", "K", "A"];
+let playerPoints = 0,
+  compPoints = 0;
+
+// html references
+const btnAsk = document.querySelector("#btnAsk");
+const smalls = document.querySelectorAll("small");
 
 const buildDeck = () => {
   for (i = 2; i <= 10; i++) {
@@ -16,25 +22,21 @@ const buildDeck = () => {
   }
 
   deck = _.shuffle(deck);
-  //console.log(deck);
 
   return deck;
 };
 buildDeck();
-
-console.log(deck);
 
 const askCard = () => {
   if (deck.length === 0) {
     throw "Deck is empty";
   }
   let card = deck.pop();
-  console.log(card);
+
   return card;
 };
 
 let card2 = askCard();
-console.log(`Carta 2 ${card2}`);
 
 const valueCard = (card2) => {
   const value = card2.substring(0, card2.length - 1);
@@ -42,4 +44,10 @@ const valueCard = (card2) => {
 };
 valueCard(card2);
 
-console.log(`Valor carta : ${valueCard(card2)}`);
+// events
+btnAsk.addEventListener("click", () => {
+  const card = askCard();
+  playerPoints = playerPoints + valueCard(card);
+  console.log(`carta :${card} puntos jugador: ${playerPoints}`);
+  smalls[0].innerText = playerPoints;
+});

@@ -11,11 +11,11 @@
   <body>
     <div class="container-fluid">
       <header class="title">Blackjack</header>
-      <div class="row mt-1">
+      <div class="row mt-1" id="divButtons">
         <div class="col text-center">
-          <button class="btn btn-danger">New Game</button>
-          <button class="btn btn-primary">Ask Card</button>
-          <button class="btn btn-primary">Stop</button>
+          <button id="btnNewGame" class="btn btn-danger">New Game</button>
+          <button id="btnAsk" class="btn btn-primary">Ask Card</button>
+          <button id="btnStop" class="btn btn-primary">Stop</button>
         </div>
       </div>
       <div class="row">
@@ -23,7 +23,7 @@
           <h3>Player 1 - <small>0</small></h3>
         </div>
       </div>
-      <div class="row row-cols-auto mt-2 ms-5" id="player-cards">
+      <div id="player-cards" class="row row-cols-auto mt-2 ms-5">
         <div class="col">
           <img class="card" src="assets/cards/2H.png" />
         </div>
