@@ -8,6 +8,7 @@ let playerPoints = 0,
 const btnAsk = document.querySelector("#btnAsk");
 const smalls = document.querySelectorAll("small");
 const divPlayerCards = document.querySelector("#player-cards");
+const divCompCards = document.querySelector("#comp-cards");
 
 const buildDeck = () => {
   for (i = 2; i <= 10; i++) {
@@ -45,11 +46,29 @@ const valueCard = (card2) => {
 };
 valueCard(card2);
 
+//comp turn
+
+const turnComp = (minPoints) => {
+  do {
+    const card = askCard();
+    compPoints = compPoints + valueCard(card);
+    smalls[1].innerText = compPoints;
+
+    const imgCard = document.createElement("img");
+    imgCard.src = `assets/cards/${card}.png`;
+    imgCard.classList.add("card");
+    divCompCards.append(imgCard);
+
+    if (minPoints > 21) {
+      break;
+    }
+  } while (compPoints < minPoints && minPoints <= 21);
+};
+
 // events
 btnAsk.addEventListener("click", () => {
   const card = askCard();
   playerPoints = playerPoints + valueCard(card);
-  console.log(`carta :${card} puntos jugador: ${playerPoints}`);
   smalls[0].innerText = playerPoints;
 
   const imgCard = document.createElement("img");
@@ -60,8 +79,18 @@ btnAsk.addEventListener("click", () => {
   if (playerPoints > 21) {
     console.warn("you lost");
     btnAsk.disabled = true;
+    btnStop.disabled = true;
+    turnComp(playerPoints);
   } else if (playerPoints === 21) {
     console.warn("you win!!");
     btnAsk.disabled = true;
+    btnStop.disabled = true;
+    turnComp(playerPoints);
   }
+});
+
+btnStop.addEventListener("click", () => {
+  btnAsk.disabled = true;
+  btnStop.disabled = true;
+  turnComp(playerPoints);
 });
