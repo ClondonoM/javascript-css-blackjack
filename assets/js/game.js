@@ -7,6 +7,7 @@ let playerPoints = 0,
 // html references
 const btnAsk = document.querySelector("#btnAsk");
 const smalls = document.querySelectorAll("small");
+const divPlayerCards = document.querySelector("#player-cards");
 
 const buildDeck = () => {
   for (i = 2; i <= 10; i++) {
@@ -50,4 +51,14 @@ btnAsk.addEventListener("click", () => {
   playerPoints = playerPoints + valueCard(card);
   console.log(`carta :${card} puntos jugador: ${playerPoints}`);
   smalls[0].innerText = playerPoints;
+
+  const imgCard = document.createElement("img");
+  imgCard.src = `assets/cards/${card}.png`;
+  imgCard.classList.add("card");
+  divPlayerCards.append(imgCard);
+
+  if (playerPoints > 21) {
+    console.warn("perdiste");
+    btnAsk.disabled = true;
+  }
 });
