@@ -6,6 +6,8 @@ let playerPoints = 0,
 
 // html references
 const btnAsk = document.querySelector("#btnAsk");
+const btnStop = document.querySelector("#btnStop");
+const btnNewGame = document.querySelector("#btnNewGame");
 const smalls = document.querySelectorAll("small");
 const divPlayerCards = document.querySelector("#player-cards");
 const divCompCards = document.querySelector("#comp-cards");
@@ -63,6 +65,18 @@ const turnComp = (minPoints) => {
       break;
     }
   } while (compPoints < minPoints && minPoints <= 21);
+
+  setTimeout(() => {
+    if (compPoints === minPoints) {
+      alert("Even");
+    } else if (minPoints > 21) {
+      alert("You lose!!");
+    } else if (compPoints > 21) {
+      alert("You Win!!");
+    } else if (compPoints > minPoints) {
+      alert("You lose!!");
+    }
+  }, 100);
 };
 
 // events
@@ -93,4 +107,17 @@ btnStop.addEventListener("click", () => {
   btnAsk.disabled = true;
   btnStop.disabled = true;
   turnComp(playerPoints);
+});
+
+btnNewGame.addEventListener("click", () => {
+  deck = [];
+  deck = buildDeck();
+  playerPoints = 0;
+  compPoints = 0;
+  smalls[0].innerText = 0;
+  smalls[1].innerText = 0;
+  divPlayerCards.innerHTML = "";
+  divCompCards.innerHTML = "";
+  btnAsk.disabled = false;
+  btnStop.disabled = false;
 });
