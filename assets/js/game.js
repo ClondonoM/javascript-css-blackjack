@@ -58,7 +58,10 @@ btnAsk.addEventListener("click", () => {
   divPlayerCards.append(imgCard);
 
   if (playerPoints > 21) {
-    console.warn("perdiste");
+    console.warn("you lost");
+    btnAsk.disabled = true;
+  } else if (playerPoints === 21) {
+    console.warn("you win!!");
     btnAsk.disabled = true;
   }
 });
