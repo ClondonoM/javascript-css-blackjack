@@ -1,18 +1,19 @@
 (() => {
   "use strict";
-  let deck = [];
-  const types = ["C", "D", "H", "S"];
-  const highs = ["J", "Q", "K", "A"];
-  let playerPoints = 0,
+  let deck = [],
+    playerPoints = 0,
     compPoints = 0;
 
+  const types = ["C", "D", "H", "S"],
+    highs = ["J", "Q", "K", "A"];
+
   // html references
-  const btnAsk = document.querySelector("#btnAsk");
-  const btnStop = document.querySelector("#btnStop");
-  const btnNewGame = document.querySelector("#btnNewGame");
-  const smalls = document.querySelectorAll("small");
-  const divPlayerCards = document.querySelector("#player-cards");
-  const divCompCards = document.querySelector("#comp-cards");
+  const btnAsk = document.querySelector("#btnAsk"),
+    btnStop = document.querySelector("#btnStop"),
+    btnNewGame = document.querySelector("#btnNewGame"),
+    smalls = document.querySelectorAll("small"),
+    divPlayerCards = document.querySelector("#player-cards"),
+    divCompCards = document.querySelector("#comp-cards");
 
   const buildDeck = () => {
     for (let i = 2; i <= 10; i++) {
@@ -27,9 +28,7 @@
       }
     }
 
-    deck = _.shuffle(deck);
-
-    return deck;
+    return _.shuffle(deck);
   };
   buildDeck();
 
@@ -37,9 +36,8 @@
     if (deck.length === 0) {
       throw "Deck is empty";
     }
-    let card = deck.pop();
 
-    return card;
+    return deck.pop();
   };
 
   let card2 = askCard();
