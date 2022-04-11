@@ -76,7 +76,7 @@ const turnComp = (minPoints) => {
     } else if (compPoints > minPoints) {
       alert("You lose!!");
     }
-  }, 100);
+  }, 50);
 };
 
 // events
@@ -91,12 +91,12 @@ btnAsk.addEventListener("click", () => {
   divPlayerCards.append(imgCard);
 
   if (playerPoints > 21) {
-    console.warn("you lost");
+    //console.warn("you lost");
     btnAsk.disabled = true;
     btnStop.disabled = true;
     turnComp(playerPoints);
   } else if (playerPoints === 21) {
-    console.warn("you win!!");
+    //console.warn("you win!!");
     btnAsk.disabled = true;
     btnStop.disabled = true;
     turnComp(playerPoints);
